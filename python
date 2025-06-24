@@ -1,0 +1,28 @@
+
+---
+
+### 🔧 `generate_spectrograms.py`
+```python
+import librosa
+import librosa.display
+import os
+import matplotlib.pyplot as plt
+import numpy as np
+
+genres = os.listdir('data/genres')
+os.makedirs('spectrograms', exist_ok=True)
+
+for genre in genres:
+    files = os.listdir(f"data/genres/{genre}")
+    os.makedirs(f"spectrograms/{genre}", exist_ok=True)
+    for file in files:
+        y, sr = librosa.load(f"data/genres/{genre}/{file}", duration=30)
+        S = librosa.feature.melspectrogram(y=y, sr=sr)
+        S_DB = librosa.power_to_db(S, ref=np.max)
+
+        plt.figure(figsize=(2.24, 2.24))
+        librosa.display.specshow(S_DB, sr=sr)
+        plt.axis('off')
+        plt.tight_layout()
+        plt.savefig(f"spectrograms/{genre}/{file[:-4]}.png", bbox_inches='tight', pad_inches=0)
+        plt.close()
