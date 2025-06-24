@@ -1,0 +1,6 @@
+tensorflow
+librosa
+matplotlib
+opencv-python
+numpy
+streamlit
