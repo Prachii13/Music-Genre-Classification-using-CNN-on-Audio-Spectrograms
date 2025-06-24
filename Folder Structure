@@ -1,0 +1,11 @@
+music_genre_classifier/
+├── data/genres/                     # Subfolders for each genre (rock/, jazz/, ...)
+├── spectrograms/                    # Saved spectrogram images
+├── generate_spectrograms.py         # Converts MP3/WAV → Mel Spectrogram
+├── train_model.py                   # CNN training
+├── predict.py                       # CLI for predicting new track
+├── app.py                           # Streamlit genre predictor
+├── model.h5                         # Trained CNN model
+├── requirements.txt
+├── README.md
+└── .gitignore
